@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING") // used for migrations
+}
+
+model Tweets {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  text      String
+  // author    String
+  // likes     Int      @default(0)
+  // retweets  Int      @default(0)
+  // replies   Int      @default(0)
+  // quoteTweets Int    @default(0)
+  // quoteTweetsId Int?
+  // quoteTweets Tweets? @relation("quoteTweets", fields: [quoteTweetsId], references: [id])
+  // retweetsId Int?
+  // retweets Tweets? @relation("retweets", fields: [retweetsId], references: [id])
+  // repliesId Int?
+  // replies Tweets? @relation("replies", fields: [repliesId], references: [id])
+  // likesId Int?
+  // likes Tweets? @relation("likes", fields: [likesId], references: [id])
+}
