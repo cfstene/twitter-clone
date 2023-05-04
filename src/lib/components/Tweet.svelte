@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let tweet;
+  export let tweet:any;
 
   if (tweet.text.includes("#")) {
     tweet.text = tweet.text.replace(/#(\w+)/g, '<a href="/hashtag/$1">#$1</a>')

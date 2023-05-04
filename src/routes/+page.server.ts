@@ -1,3 +1,5 @@
+export const ssr = false;
+
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 import type { Actions } from "@sveltejs/kit";
@@ -13,9 +15,6 @@ export const actions: Actions = {
         text: tweet
       }
     }); 
-
-    console.log(response)
-
-    return response;
+    return {success: true};
   }
 }

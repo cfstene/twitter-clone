@@ -1,5 +1,4 @@
 <script lang="ts">
-  export const ssr = false;
   import "../app.postcss";
 
   let navItems = [

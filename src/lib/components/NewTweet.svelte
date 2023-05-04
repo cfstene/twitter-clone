@@ -1,5 +1,13 @@
-<script>
+<script lang="ts">
   import { enhance } from "$app/forms";
+  import type { ActionData } from "../../routes/$types";
+  export let form: ActionData; 
+
+  let submitting = false;
+
+  $: if (form?.success) {
+    submitting = false
+  }
 
 </script>
 
@@ -9,7 +17,7 @@
   </div>
   <div class="min-w-0 flex-1">
 
-    <form method="post" action="?/createTweet" use:enhance>
+    <form method="post" action="?/createTweet" use:enhance on:submit={()=> submitting = true}>
       <div class="border-b border-gray-200 focus-within:border-indigo-600">
         <textarea 
           autocomplete="off"
@@ -29,7 +37,11 @@
               <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
             </svg>       
           </div>
+          {#if submitting}
+          <button type="submit" disabled class="inline-flex items-center rounded-full bg-indigo-600 px-4 py-2 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submitting... </button>
+          {:else}
           <button type="submit" class="inline-flex items-center rounded-full bg-indigo-600 px-4 py-2 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Tweet</button>
+          {/if}
         </div>
     </form>
 
