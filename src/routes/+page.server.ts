@@ -16,5 +16,16 @@ export const actions: Actions = {
       }
     }); 
     return {success: true};
+  }, 
+
+  deleteTweet: async ({request}) => {
+    const data = await request.formData();
+    const tweetId = data.get('tweetId') as string;
+
+    const response = await prisma.tweets.delete({
+      where: {
+        id: parseInt(tweetId)
+      }
+    });
   }
 }
