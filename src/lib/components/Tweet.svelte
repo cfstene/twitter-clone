@@ -3,9 +3,11 @@
   import { fade } from 'svelte/transition';
   export let tweet: any;
   let moreMenuOpen = false;
+
   if (tweet.text.includes("#")) {
     tweet.text = tweet.text.replace(/#(\w+)/g, '<a href="/hashtag/$1">#$1</a>');
   }
+  
 </script>
 
 <div class="flex w-full border-r border-b py-4 px-5 hover:bg-gray-100">
@@ -54,9 +56,11 @@
       </div>
     </div>
 
-    <div class="whitespace-break-spaces">
-      {@html tweet.text}
-    </div>
+    <a href="/cfstene/tweet/{tweet.id}">
+      <div class="whitespace-break-spaces">
+        {@html tweet.text}
+      </div>
+    </a>
 
     <div class="flex gap-10 pt-2">
       <svg
