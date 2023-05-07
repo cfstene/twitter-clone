@@ -22,7 +22,7 @@
   <div class="fixed inset-y-0 z-50 flex w-20 lg:w-60 flex-col">
     <div class="flex grow flex-col gap-y-2 overflow-y-auto bg-white px-6 border-r">
       <div class="flex h-12 mt-3 shrink-0 items-center">
-        <img class="h-8 w-8 lg:ml-2" src="/twitter.png" alt="Twitter Clone">
+        <img class="h-8 w-auto lg:ml-2" src="/twitter.png" alt="Twitter Clone">
       </div>
       <nav class="flex flex-1 flex-col">
 

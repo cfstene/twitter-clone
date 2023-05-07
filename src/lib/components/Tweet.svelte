@@ -1,12 +1,15 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
+  import type { Tweets } from "@prisma/client";
   import { fade } from 'svelte/transition';
-  export let tweet: any;
+  export let tweet: Tweets;
   let moreMenuOpen = false;
 
   if (tweet.text.includes("#")) {
     tweet.text = tweet.text.replace(/#(\w+)/g, '<a href="/hashtag/$1">#$1</a>');
   }
+
+  let date = new Date(tweet.createdAt).toLocaleDateString();
   
 </script>
 
@@ -24,7 +27,7 @@
       <div>
         <span class="font-semibold mr-3">Christian Stene</span>
         <span class="mr-2">@cfstene</span>
-        <span>2h</span>
+        <span>{date}</span>
       </div>
       <div>
         <button on:click={()=> moreMenuOpen = !moreMenuOpen}>
